@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang chủ</title>
+        <script src="https://kit.fontawesome.com/d717109192.js"crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+          defer
+        ></script>
+        <script src="/data/index_products.js" defer></script> 
+        <script src="scripts/user.js" defer></script>
+        <script src="scripts/cart.js" defer></script>
+        <script src="scripts/cart-theloai.js" defer></script>
+        <script src="scripts/filter.js" defer ></script>
+     
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+        <link rel="stylesheet" href="styles/shared.css"/>
+        <link rel="stylesheet" href="styles/cart.css">
+        <link rel="stylesheet" href="styles/login.css">
+        <link rel="stylesheet" href="styles/the-loai.css" />
+        
+      </head>
+<body>
+  <header>
+    <div class="top-menu">
+      <a href="index.html" class="logo"><img src="img/banner/HAPPYMILK.png" /></a>
+      <div class="search" data-dropdown-btn>
+        <input type="text" id="search_bar"  placeholder="Tìm kiếm sản phẩm..." data-search/>
+        <div class="box"></div>
+      </div>
+      <div class="user-menu">
+        <div class="userBTN">
+          <div class="user login">
+            <button class="btnLogin-popup" id="btnLogin">Đăng Nhập</button>
+          </div>
+          <div class="user logout">
+             <h2 id="logout"></h2>
+            <button class="btnLogout-popup" id="btnLogout" onclick="logout()">Đăng Xuất</button>
+          </div>
+        </div>
+        <div class="fav">
+          <a href="#"><i class="fa-regular fa-heart"></i></a>
+          <p class="counter fav-counter">0</p>
+        </div>
+        <div class="cart-icon">
+          <i class="fas fa-cart-shopping"></i>
+          <p class="counter cart-counter">0</p>
+        </div>
+      </div>
+    </div>
+  </header>
+      <main>
+        <div class="path">
+            <span>Trang chủ ></span>
+            <span class="type-name">Thể loại</span>
+        </div>
+        <div class="shop">
+            <div class="left-sidebar">
+                <ul class="category">
+                    <h3>Thể loại</h3>    
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa tăng chiều cao">Sữa tăng chiều cao</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho trẻ em">Sữa cho trẻ em</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho người cao tuổi">Sữa cho người cao tuổi</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa hộp">Sữa hộp</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa tăng cân cho trẻ em">Sũa tăng cân cho trẻ em</li>  
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa bột">Sữa bột</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa bột pha sẵn">Sữa bột pha sẵn</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho mẹ bầu">Sữa cho mẹ bầu</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho bệnh nhân ung thư">Sữa cho bệnh nhân ung thư</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho bệnh nhân tiểu đường">Sữa cho bệnh nhân tiểu đường</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa cho người bệnh thận">Sữa cho người bệnh thận</li>
+                    <li><input class="btn btn-primary type" type="checkbox" onchange="filter()" value="Sữa chống loãng xương">Sữa chống loãng xương</li>
+
+                </ul>
+                <div class="sort">
+                    <h3>Lọc theo giá</h3>
+                    <li><input class="btn btn-primary price" type="checkbox" onchange="filter()" value="1">Dưới 300000đ</li>
+                    <li><input class="btn btn-primary price" type="checkbox" onchange="filter()" value="2">Từ 300000đ đến 500000đ</li>
+                    <li><input class="btn btn-primary price" type="checkbox" onchange="filter()" value="3">Từ 500000đ đến 700000đ</li> 
+                    <li><input class="btn btn-primary price" type="checkbox" onchange="filter()" value="4">Từ 700000đ đến 900000đ</li>  
+                    <li><input class="btn btn-primary price" type="checkbox" onchange="filter()" value="5">Trên 900000đ</li>
+                </div>
+            </div>
+            <div class="box"></div>
+            <div class="items">
+                <div class="item-container" id="list"></div>
+                <div class="page-counter" >
+                  <div><i class="fa-solid fa-chevron-left back"></i></div>
+                  <div id="pagination-numbers"></div>            
+                  <div><i class="fa-solid fa-chevron-right forward"></i></div>
+                </div>
+            </div>
+        </div>
+ <!-- ====================================CART====================================== -->
+
+      <div class="cart-overlay">
+        <div class="cart">
+          <span class="close-cart">
+            <i class="fas fa-window-close"></i>
+          </span>
+
+          <h2>GIỎ HÀNG</h2>
+          <div class="cart-content"></div>
+
+          <div class="cart-footer">
+            <h3>Tổng cộng: <span class="cart-total"></span></h3>
+            <a href="/checkout.html" class="checkout">Đặt hàng</a>
+          </div>
+        </div>
+      </div>
+<!-- ========================================================================== -->
+      </main>
+      <footer>
+        <div class="contact">
+          <form class="newsletter">
+              <h3>Đăng kí nhận thông tin khuyến mãi</h3>
+              <div class="input-box">
+                <input type="text" name="email" placeholder="Nhập mail của bạn">
+                <button type="button" class="send-btn"><i class="fa-solid fa-bullhorn"></i></button>
+              </div>
+          </form>
+          <div class="social-media">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="info-section">
+          <h3>Thông tin liên hệ</h3>
+          <div class="info-container">
+            <div class="info">
+              <i class="fa-solid fa-school"></i>
+              <p>
+                <strong>Chi nhánh 1: </strong>1 Nguyễn Văn Cừ, Phường 3, Quận 5
+              </p>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-school"></i>
+              <p>
+                <strong>Chi nhánh 2: </strong>105 Nguyễn Thị Minh Khai, Phường 1,
+                Quận 3
+              </p>
+            </div>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-phone"></i>
+              <p><strong>Số điện thoại: </strong>38.696969</p>
+            </div>
+            <div class="info">
+              <i class="fa-regular fa-envelope"></i>
+              <p>
+                <strong>Email: </strong
+                ><a href="mailto:happymilk@gmail.com">happymilk@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div class="wrapper">
+        <div class="form-box login">
+          <span class="icon-closelog"><i class="fa-solid fa-xmark"></i></span>
+            <h2>Đăng Nhập</h2>
+            <form onsubmit="login()">
+              <div class="input-box1">
+                <input id="username" type="text"> 
+                <label>Tên Đăng Nhập</label>
+              </div>
+              <div class="input-box1">
+                <input id="password" type="password"> 
+                <label>Mật Khẩu</label>
+              </div>
+              <button type="submit" class="btn login">Đăng Nhập</button>
+              <div class="login-register">
+                <p>Chưa có tài khoản?</p> <a href="#" class="register-link">Đăng Ký</a>
+              </div>
+            </form>
+        </div>
+        <div class="form-box register">
+          <span class="icon-closereg"><i class="fa-solid fa-xmark"></i></span>
+            <h2>Đăng Ký</h2>
+            <form onsubmit="signUp()">
+              <div class="input-box1">
+                <input id="nameSignUp" type="text"> 
+                <label>Tên Tài Khoản</label>
+                <div id="nameerror">Bạn chưa nhập tên tài khoản</div>
+              </div>
+              <div class="input-box1">
+                <input id="usernameSignUp" type="text"> 
+                <label>Tên Đăng Nhập</label>
+                <div id="usernameerror">Bạn chưa nhập tên đăng nhập</div>
+              </div>
+              <div class="input-box1">
+                <input id="emailSignUp" type="email"> 
+                <label>Email</label>
+                <div id="emailerror"></div>
+              </div>
+              <div class="input-box1">
+                <input id="passwordSignUp" type="password"> 
+                <label>Mật Khẩu</label>
+                <div  id="passworderror">Bạn chưa nhập mật khẩu</div>
+              </div>
+              <div class="input-box1">
+                <input id="confirm_password" type="password"> 
+                <label>Xác Nhận Mật Khẩu</label>
+                <div id="confirmerror">Mật khẩu không trùng khớp</div>
+              </div>
+              <button type="submit" class="btn logout">Đăng Ký</button>
+              <div class="login-register">
+                <p>Đã có tài khoản?</p> <a href="#" class="login-link">Đăng Nhập</a>
+              </div>
+            </form>
+        </div>
+      </div>
+      <script src="scripts/login.js"></script>
+</body>
+</html>

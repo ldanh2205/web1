@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Danh sách sản phẩm</title>      
+        <link rel="stylesheet" href="styles/admin.css" />
+        <script src="data/index_products.js"></script>
+        <script src="scripts/admin.js" defer></script>
+    </head>
+    <body>
+        <div id="container">
+            <!-- Header -->
+            <div class="leftmenu">
+                <ul>
+                    <li>
+                        <button class="content_btn product_btn">
+                            <img src="img/admin/1.jpeg" class="navlogo"/>
+                            <span class="title">Sản phẩm</span> 
+                        </button>
+                    </li>
+                    <li>
+                        <button class="content_btn logout_btn">
+                            <img src="img/admin/log-out.png" class="navlogo"/>
+                            <span class="title">Đăng xuất</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle" onclick="toggleMenu()"></div>
+                <div id="logo"><a href="index.html"><img src="img/banner/HAPPYMILK.png"/></a></div>
+                <div class="admin-info">
+                    <div class="admin_name"></div>
+                </div>
+            </div>
+            <!-- Main -->
+
+            <!-- Bảng chi tiết -->
+            <!--  -->
+            <div class="detail_wrapper">
+                <div class="detail_table">
+                    <div class="detail_table_header">
+                        <h2>Thông tin sản phẩm</h2>
+                        <img src="img/admin/edit.png" id="edit_detail_img">
+                        <img src="img/admin/close.png" id="close_detail_img">
+                    </div>
+                    <div class="editing_block">
+                        <label for="">Ảnh:</label>
+                        <button class="edit_img_btn" onclick="activeImgInput()" disabled>Chọn file</button>
+                        <input type="file" name="ảnh cần thay" class="edit_img_input" accept="image/png, image/jpeg, image/png" disabled />
+                        <div class="file_img_edit"></div>
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block">
+                        <label for="">Tên:</label>
+                        <input type="text" name="tên" class="edit_product_input edit_name_input" disabled/>
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block">
+                        <label for="">Giá:</label>
+                        <input type="number" name="giá" class="edit_product_input edit_price_input" disabled/>
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block">
+                        <label for="">Xuất sứ:</label>
+                        <input type="text" name="Xuất sứ" class="edit_product_input edit_origin_input" disabled/>
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block">
+                        <label for="">Mô tả:</label>
+                        <textarea name="mô tả" class="edit_product_input edit_descr_input" cols="120" rows="3" disabled></textarea>
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block edit_milkype_block">
+                        <label for="type">Thể loại:</label>
+                        <input type="checkbox" name="Sữa cho lứa tuổi trung niên"       class="edit_type_input" value="sua_trung_nien"      disabled/>Sữa cho lứa tuổi trung niên
+                        <input type="checkbox" name="Sữa tăng chiều cao"   class="edit_type_input" value="sua_tangcc"  disabled/>Sữa tăng chiều cao
+                        <input type="checkbox" name="Sữa cho trẻ em" class="edit_type_input" value="sua_tre_em" disabled/>Sữa dành cho trẻ em 
+                        <input type="checkbox" name="Sữa cho người cao tuổi"       class="edit_type_input" value="sua_cao_tuoi"      disabled/>Sữa dành cho người cao tuổi
+                        <input type="checkbox" name="Sữa cho mẹ vầ bé"      class="edit_type_input" value="sua_ba_bau"     disabled/>Sữa dành cho mẹ và bé
+                        <input type="checkbox" name="Sũa bột"        class="edit_type_input" value="sua_bot"       disabled/>Sữa bột
+                        <input type="checkbox" name="Sữa cho trẻ suy dinh dưỡng"  class="edit_type_input" value="sua_dd" disabled/>Sữa cho trẻ suy dinh dưỡng
+                        <input type="checkbox" name="Sữa cho bệnh nhân ung thư"  class="edit_type_input" value="sua_ut" disabled/>Sữa cho bệnh nhân ung thư
+                        <input type="checkbox" name="Sữa cho người tiểu đường"  class="edit_type_input" value="sua_td" disabled/>Sữa cho người tiểu đường
+                        <input type="checkbox" name="Sữa chống loãng xương"  class="edit_type_input" value="sua_lx" disabled/>Sữa chống loãng xương
+                        <input type="checkbox" name="Sữa cho người bệnh thận"  class="edit_type_input" value="sua_bthan" disabled/>Sữa cho người bệnh thận
+                        <input type="checkbox" name="Sữa bột pha sẵn"  class="edit_type_input" value="sua_bot_pha_san disabled"/>Sữa bột pha sẵn 
+                    </div>
+                    <div class="edit_error_message"></div>
+                    <div class="editing_block">
+                        <button type="submit" class="submit_btn editing_btn" onclick="confirmEditItem()" disabled>Xác nhận</button>
+                    </div>
+                </div>
+            </div> 
+            <!--  -->
+
+            <!-- Content -->
+            <div class="main">
+                <!-- Card box (khi màn hình thu nhỏ, bỏ leftmenu thay bằng card box) -->
+                <div class="card-box">
+                    <button class="card product_btn">
+                        <div>Sản phẩm</div>
+                        <img src="img/admin/close.png" class="card-logo"/>
+                    </button>
+                    <button class="card logout_btn">
+                        <div>Đăng xuất</div>
+                        <img src="img/admin/log-out.png" class="card-logo"/>
+                    </button>
+                </div>
+                <!--  -->      
+                <!-- Sản phẩm -->
+                <div class="content product_content active">
+                    <!--  -->
+                    <div class=page-title>DANH MỤC SẢN PHẨM</div>
+                    <div class="options">
+                        <div>
+                            <label for="choices">Sản phẩm: </label>
+                            <select name="luaChonSP" id="product_choice" onchange="renderProducts()">
+                                <option value="all">Tất cả</option>
+                                <option value="milk">Sách</option>
+                                <option value="stationery">Văn phòng phẩm</option>
+                            </select>
+                        </div>
+                        <div class="del_one_page_wrapper">
+                            <label for="">Xóa sản phẩm 1 trang:</label>
+                            <button class="del_one_page_btn" onclick="delOnePage()">XÓA</button>
+                        </div>
+                    </div>
+                    <table border="1px">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ảnh</th>
+                                <th>Thông tin</th>
+                                <th>Giá</th>
+                                <th>Chi tiết</th>
+                                <th>Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody class="products">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-wrap">
+                    <button class="pagination-button" id="prev_button" >
+                        &lt;
+                    </button>
+                    <div class="pagination-numbers">
+
+                    </div>
+                    <button class="pagination-button" id="next_button" >
+                        &gt;
+                    </button>
+                </div>
+                <div class="adding_table active">
+                    <div class="adding_table_header">
+                        <h2>Thêm sản phẩm</h2>
+                        <select name="chonspmuonthem" id="product_type" onchange="checkProductTypeWhenAdd()">
+                            <option value="themsach">Thêm sách</option>
+                            <option value="themvip">Thêm văn phòng phẩm</option>
+                        </select>
+                    </div>
+                    <div class="adding_block">
+                        <label for="">Ảnh:</label>
+                        <button class="add_img_btn" >Chọn file</button>
+                        <input type="file" name="ảnh" class="add_img_input" accept="image/png, image/jpeg, image/png" />
+                        <div class="file_img_add"></div>
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block">
+                        <label for="">Tên:</label>
+                        <input type="text" name="tên" class="add_product_input add_name_input"/>
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block">
+                        <label for="">Giá:</label>
+                        <input type="number" name="giá" class="add_product_input add_price_input" />
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block">
+                        <label for="">Xuất sứ:</label>
+                        <input type="text" name="Xuất sứ" class="add_product_input add_origin_input" />
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block">
+                        <label for="">Mô tả:</label>
+                        <textarea name="mô tả" class="add_product_input add_descr_input" cols="100" rows="3"></textarea>
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block"><button onclick="Sualoai()">Hiện loại sữa</button></div>
+                    <div class="adding_block add_milktype_block">
+                        <label for="type">Thể loại:</label>
+                        <input type="checkbox" name="Sữa bột"       class="add_type_input" value="sua_bot"/>Sữa bột
+                        <input type="checkbox" name="Sữa cho mẹ và bé"   class="add_type_input" value="sua_ba_bau"/>Sữa cho mẹ và bé
+                        <input type="checkbox" name="Sữa tăng chiều cao" class="add_type_input" value="sua_tangcc"/>Sữa tăng chiều cao
+                        <input type="checkbox" name="Sữa hộp"       class="add_type_input" value="sua_hop"/>Sữa hộp
+                        <input type="checkbox" name="Sữa bột pha sẵn"      class="add_type_input" value="sua_bot_pha_san"/>Sữa bột pha sẵn
+                        <input type="checkbox" name="Sữa cho trẻ em"        class="add_type_input" value="sua_tre_em"/>Sữa cho trẻ em
+                        <input type="checkbox" name="Sữa cho người cao tuổi"  class="add_type_input" value="sua_cao_tuoi"/>Sữa cho người cao tuổi
+                        <input type="checkbox" name="Sữa cho người bệnh thận"  class="add_type_input" value="sua_bthan"/>Sữa cho người bệnh thận
+                        <input type="checkbox" name="Sữa cho bệnh nhân ung thư"  class="add_type_input" value="sua_ut"/>Sữa cho bệnh nhân ung thư
+                        <input type="checkbox" name="Sữa cho bệnh nhân tiểu đường"  class="add_type_input" value="sua_td"/>Sữa cho bệnh nhân tiểu đường
+                        <input type="checkbox" name="Sữa chống loãng xương"  class="add_type_input" value="sua_lx"/>Sữa chống loãng xương
+                        <input type="checkbox" name="Sữa cho trẻ suy dinh dưỡng"  class="add_type_input" value="sua_dd"/>Sữa cho trẻ suy dinh dưỡng
+
+                    </div>
+                    <div class="add_error_message"></div>
+                    <div class="adding_block">
+                        <button type="submit" class="submit_btn adding_btn" onclick="addItem()">Thêm</button>
+                    </div>
+                </div>
+                <div class="admin-container">
+                    <h2 style="text-align: center;">Danh sách đơn hàng</h2>
+                    <table id="order-table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Ngày tháng</th>
+                                <th>Tổng cộng</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-list">
+                            <!-- Dữ liệu đơn hàng sẽ được thêm vào đây từ JavaScript -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <div id="statistics">
+                    <h2 style="text-align: center;">Thống kê theo loại</h2>
+                    <table id="tableByDay">
+                        <thead>
+                            <tr>
+                                <th>Mã khách hàng</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                                <th>Sữa tăng chiều cao</th>
+                                <th>Sữa cho trẻ em</th>
+                                <th>Sữa cho người cao tuổi</th>
+                                <th>Sữa hộp</th>
+                                <th>Sữa tăng cân cho trẻ em</th>
+                                <th>Sữa bột</th>
+                                <th>Sữa bột pha sẵn</th>
+                                <th>Sữa cho mẹ bầu</th>
+                                <th>Sữa cho bệnh nhân ung thư</th>
+                                <th>Sữa cho bệnh nhân tiểu đường</th>
+                                <th>Sữa cho người bệnh thận</th>
+                                <th>Sữa chống loãng xương</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu sẽ được hiển thị ở đây -->
+                        </tbody>
+                    </table>
+                
+                </div>
+                
+                        
+                <div class="footer">
+                    <div class="footer-left">
+                        <a href="HTMLPage1.html"><img src="img/banner/HAPPYMILK.png" id="footer-logo"/></a>
+                        <p><i>HAPPYMILK</i></p>
+                        <p><i>Địa chỉ: số 3</i></p>
+                        
+                        <a href=""><img src="img/admin/Insta-on.png"></a>
+                        <a href=""><img src="img/admin/tumblr-on.png"></a>
+                        <a href=""><img src="img/admin/twitter-on.png"></a>
+                        <a href=""><img src="img/admin/Youtube-on.png"></a>
+                    </div>
+                    <div class="footer-right">
+                        <div class="service-footer-admin">
+                            <h3>DỊCH VỤ</h3>
+                            <dl>Điều khoản</dl>
+                            <dl>Chính sách bảo mật thông tin</dl>
+                            <dl>Chính sách bảo mật thanh toán</dl>
+                            <dl>Giới thiệu</dl>
+                            <dl>Hệ thống cửa hàng</dl>
+                        </div>
+                        <div class="support-footer-admin">
+                            <h3>HỖ TRỢ</h3>
+                            <dl>Chính sách đổi- trả- hoàn tiền</dl>
+                            <dl>Chính sách bảo hành- bồi hoàn</dl>
+                            <dl>Chính sách vận chuyển</dl>
+                            <dl>Chính sách khách sỉ</dl>
+                            <dl>Phương thức thanh toán, xuất HĐ</dl>
+                        </div>
+                        <div class="contact-footer-admin">
+                            <h3>LIÊN HỆ</h3>
+                            <img src="img/admin/marker.png"><p>Trái đất</p>
+                            <img src="img/admin/hotline.png"><p>0123456789</p>
+                            <div class="payment-footer">
+                                <img src="img/admin/momopay.png">
+                                <img src="img/admin/shopeepay_logo1.png">
+                                <img src="img/admin/logo_moca_120.jpg">
+                            </div>   
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

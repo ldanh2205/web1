@@ -1,0 +1,292 @@
+main section{
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.path {
+  font-size: 2rem;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+}
+
+/* thong tin chinh san pham */
+.main-info {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.item-img-large {
+  flex-basis: 30%;
+  max-height: 40rem;
+  background-color: #fff;
+  padding: 2px 1px;
+}
+
+.item-img-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain ;
+}
+
+.item-info {
+  flex-basis: 70%;
+}
+
+.item-name-large {
+  font-size: 4rem;
+  font-weight: 600;
+  font-family: "Maitree", serif;
+}
+
+.origin {
+  margin: 1rem 0;
+}
+
+.origin .by {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.origin-name {
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: 'Maitree', serif;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.origin-name:hover {
+  text-decoration: underline;
+}
+
+.price {
+  margin: 1rem 0;
+  font-size: 3.5rem;
+  color: #a31023;
+}
+
+.condition {
+  margin: 1rem auto;
+  display: flex;
+  gap: 8px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.condition .con {
+  color: #38e54d;
+}
+
+.condition .het {
+  color: #ff1e00;
+}
+
+.btn {
+  padding: 1.5rem;
+  font-size: 2rem;
+  margin: 1rem 2rem 1rem 0;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  scale: 1.1;
+}
+
+.add-cart {
+  color: white;
+  background-color: var(--navy);
+}
+
+.wishlist {
+  color: var(--navy);
+  background-color: #fff;
+}
+
+/* thong tin phu */
+h3 {
+  font-size: 2.6rem;
+  margin-bottom: 4rem;
+}
+
+.overview p {
+  margin-top: 3rem;
+  font-size: 2rem;
+  word-spacing: 0.3rem;
+  line-height: 3rem;
+}
+
+/* recommend */
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.item-img {
+  background-color: #fff;
+  padding: 2px 1px;
+}
+
+.item-img img {
+  display: block;
+  margin: 0 auto;
+  width: calc(25rem + 10%);
+  height: calc(25rem + 10%);
+  max-height: 28rem;
+  object-fit: contain;
+  background-position: center;
+}
+
+.item-name {
+  padding-top: 0.5rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: black;
+}
+
+.milk-origin {
+  font-family: "Maitree", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.milk-origin:hover {
+  text-decoration: underline;
+}
+
+.item-price {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #a31023;
+}
+
+.recommend{
+  position: relative;
+  margin: 3rem 0;
+}
+
+.recommend h3{
+  width: 90%;
+  margin: 0 auto 3rem auto;
+}
+
+.swiper{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.swiper-button-next{
+  width: 4rem;
+  background-color: var(--navy);
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  right: 1rem;
+}
+
+.swiper-button-prev{
+  width: 4rem;
+  background-color: var(--navy);
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  left: 1rem;
+}
+
+/* responsive */
+@media( max-width: 900px){
+  .main-info{
+    display: block;
+    max-height: fit-content;
+  }
+
+  .item-img-large{
+    height: 70vh;
+    margin: 0 auto;
+  }
+
+  .item-name-large{
+    font-size: 3.2rem;
+  }
+
+  .main-info .btn{
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+    width: 90%;
+  }
+
+  .item-img img{
+    width: calc(20rem + 10%);
+    height: calc(20rem + 10%);
+  }
+}
+
+@media( max-width: 650px){
+  .item-img img{
+    width: calc(15rem + 10%);
+    height: calc(15rem + 10%);
+  }
+
+  .swiper-button-next{
+    right: 0;
+  }
+  .swiper-button-prev{ 
+    left: 0;
+  }
+}
+header .top-menu .search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+header .top-menu .search .box {
+  position: absolute;
+  width: 100%;
+  height: 250px;
+  border:1px solid rgb(0, 0, 0);
+  top:42px;
+  background: #ddd;
+  border-collapse: 10px;
+  overflow: auto;
+  visibility: hidden;
+}
+header .top-menu .search .box a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  width: 100%;
+  height: 30%;
+  /* border: 1px solid #fff; */
+  display: flex;
+  align-items: center;
+  transition: .3s linear;
+}
+header .top-menu .search .box a img {
+  width: 60px;
+  height: 60px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+header .top-menu .search .box a:hover {
+   background: #87494b;
+}
+
+header .top-menu .search .box a .content1 {
+  color: rgb(0, 0, 0);
+}
+header .top-menu .search .box a .content1 h6 {
+  font-size: 20px;
+}
+header .top-menu .search .box a .content1 p{
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}

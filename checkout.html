@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <script
+        src="https://kit.fontawesome.com/d717109192.js"
+        crossorigin="anonymous"
+    ></script>
+    <script src="scripts/login.js" defer></script>
+    <script src="scripts/cart.js" defer></script> 
+    <script src="scripts/cart-theloai.js" defer></script>
+    <script src="scripts/checkout.js" defer></script>
+    <script src="scripts/user.js" defer></script>
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/checkout.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+  <header>
+    <div class="top-menu">
+      <a href="index.html" class="logo"><img src="img/logo.png" /></a>
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          <i class="fa-solid fa-shapes"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/the-loai.html">Best seller</a></li>
+          <li><a href="/the-loai.html">Sữa tăng chiều cao</a></li>
+          <li><a href="/the-loai.html">Sữa cho trẻ em</a></li>
+          <li><a href="/the-loai.html">Sữa cho người cao tuổi</a></li>
+          <li><a href="/the-loai.html">Sữa cho trẻ suy dinh dưỡng</a></li>
+          <li><a href="/the-loai.html">Sữa hộp</a></li>
+          <li><a href="/the-loai.html">Sữa chống loãng xương</a></li>
+          <li><a href="/the-loai.html">Sữa cho bệnh nhân tiểu đường</a></li>
+          <li><a href="/the-loai.html">Sữa cho người bệnh thận</a></li>
+          <li><a href="/the-loai.html">Sữa cho bệnh nhân ung thư</a></li>
+          <li><a href="/the-loai.html">Sữa bột</a></li>
+          <li><a href="/the-loai.html">Sữa bột pha sẵn</a></li>
+          <li><a href="/the-loai.html">Sữa cho mẹ và bé</a></li>
+        </ul>
+      </div>
+      <div class="search" data-dropdown-btn>
+        <input type="text" id="search_bar"  placeholder="Tìm kiếm sản phẩm..." data-search/>
+        <div class="box"></div>
+      </div>
+      <div class="user-menu">
+        <div class="user logout">
+          <h2 id="logout"></h2>
+         <button class="btnLogout-popup" id="btnLogout" onclick="logout()">Đăng Xuất</button>
+       </div>
+        <div class="fav">
+          <a href="#"><i class="fa-regular fa-heart"></i></a>
+          <p class="counter fav-counter">0</p>
+        </div>
+        <div class="cart-icon">
+          <i class="fas fa-cart-shopping"></i>
+          <p class="counter cart-counter">0</p>
+        </div>
+      </div>
+    </div>
+  </header>
+      <main>
+        <div class="cart-container">
+            <table>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Tạm tính</th>
+                </tr>
+            </table>
+            <h2></h2>
+        </div>
+          <form action="/" class="order-form">
+            <label for="name">Họ và tên</label>
+            <input required type="text" name="name" class="customer-name" placeholder="Nhập họ và tên...">
+            <label for="phone">Số điện thoại</label>
+            <input required type="number" name="phone" class="customer-phone" placeholder="Nhập số điện thoại...">
+            <label for="address">Địa chỉ</label>
+            <input required type="text" name="address" class="customer-address" placeholder="Nhập địa chỉ...">
+            <button type="button" class="order-btn">Đặt hàng</button>
+          </form>
+          <div class="admin-container1">
+            <h2>  ĐƠN HÀNG ĐÃ MUA </h2>
+            <table id="order-form1">
+                <thead>
+                    <tr>
+                        <th>Tên Khách Hàng</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Địa Chỉ</th>
+                        <th>Mã Đơn Hàng</th>
+                        <th>Thời Gian Đặt Hàng</th>
+                        <th>Giá Tiền</th>
+
+
+                    </tr>
+                </thead>
+             <tbody id="order-list1">
+                
+             </tbody>
+            </table>
+           </div>
+      </div>
+      </main>
+      <footer>
+        <div class="contact">
+          <form class="newsletter">
+              <h3>Đăng kí nhận thông tin khuyến mãi</h3>
+              <div class="input-box">
+                <input type="text" name="email" placeholder="Nhập mail của bạn">
+                <button type="button" class="send-btn"><i class="fa-solid fa-bullhorn"></i></button>
+              </div>
+          </form>
+          <div class="social-media">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="info-section">
+          <h3>Thông tin liên hệ</h3>
+          <div class="info-container">
+            <div class="info">
+              <i class="fa-solid fa-house"></i>
+              <p>
+                <strong>Chi nhánh 1: </strong>1 Nguyễn Văn Cừ, Phường 3, Quận 5
+              </p>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-house"></i>
+              <p>
+                <strong>Chi nhánh 2: </strong>105 Nguyễn Thị Minh Khai, Phường 1,
+                Quận 3
+              </p>
+            </div>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-phone"></i>
+              <p><strong>Số điện thoại: </strong>38.696969</p>
+            </div>
+            <div class="info">
+              <i class="fa-regular fa-envelope"></i>
+              <p>
+                <strong>Email: </strong
+                ><a href="mailto:happymilk@gmail.com">happymilk@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
